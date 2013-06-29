@@ -18,11 +18,14 @@ class REPL(Cmd):
         self.trans = Translator()
 
     def default(self, line):
-        y = yaml.load(line)
-        print 'yaml:', y
-        js = self.trans.translate(y)
-        print 'generated js:', js
-        print self.ex.execute(js)
+        try:
+            y = yaml.load(line)
+            print 'yaml:', y
+            js = self.trans.translate(y)
+            print 'generated js:', js
+            print self.ex.execute(js)
+        except Exception as e:
+            print e
 
     def do_EOF(self, line):
         return True
