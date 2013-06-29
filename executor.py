@@ -2,12 +2,18 @@
 
 from selenium import webdriver
 
-PAGE = "file:///home/nori/Desktop/study/yamljs/hoge.html"
+import os
+
+PAGE =  "html/eval.html"
+scheme = "file:///"
 
 class Executor:
     def __init__(self):
         self.driver = driver = webdriver.PhantomJS('phantomjs')     
-        self.driver.get(PAGE)
+        p = os.path.join(os.getcwd(), PAGE)
+        print p
+        print open(p).read()[:100]
+        self.driver.get(scheme + p)
 
     def execute(self, script):
         self.driver.execute_script(r'''$(document).ready(function(){
