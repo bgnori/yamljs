@@ -37,7 +37,8 @@ class REPL(Cmd):
         return False
 
 
-repl = REPL()
+if __name__ == '__main__':
 
-repl.cmdloop()
+    repl = REPL()
+    repl.cmdloop()
 

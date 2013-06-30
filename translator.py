@@ -8,6 +8,9 @@ QUOTE = 'quote'
 TEXT = 'text'
 IF = 'if'
 FN = 'fn'
+DEF = 'def'
+
+
 
 class Translator:
     def translate(self, y):
@@ -28,6 +31,11 @@ class Translator:
     def translate_list(self, y):
         n = len(y)
         if isinstance(y[0], str):
+            if y[0] == DEF:
+                #assert n == 3
+                #return 'yamlisp[{0}] = {1};'.format(y[1], self.translate(y[2]))
+                #return "function(){yamlisp[x] = '1'; return yamlisp[x];}()"
+                pass
             if y[0] == QUOTE:
                 assert n == 2
                 return json.dumps(y[1])

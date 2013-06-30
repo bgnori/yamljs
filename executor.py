@@ -12,6 +12,7 @@ class Executor:
         self.driver = driver = webdriver.PhantomJS('phantomjs')     
         p = os.path.join(os.getcwd(), PAGE)
         self.driver.get(scheme + p)
+        js = 'yamlisp = yamlisp || {};' 
 
     def execute(self, script):
         self.driver.execute_script(r'''$(document).ready(function(){

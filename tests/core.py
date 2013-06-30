@@ -64,6 +64,14 @@ class CoreTestCase(unittest.TestCase):
         r = self.ex.execute(js)
         self.assertEqual("Hello,World!", r)
 
+    def test_def(self):
+        line = """[def, '"x"', 1]"""
+        y = yaml.load(line)
+        js = self.trans.translate(y)
+        print js
+        r = self.ex.execute(js)
+        self.assertEqual("1", r)
+
 
 if __name__ == "__main__":
     unittest.main()
