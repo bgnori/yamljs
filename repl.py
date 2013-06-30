@@ -5,7 +5,6 @@ import yaml
 
 from executor import Executor
 import translator
-from translator import Translator
 
 from cmd import Cmd
 
@@ -15,7 +14,7 @@ class REPL(Cmd):
     def __init__(self):
         Cmd.__init__(self)
         self.ex = Executor()
-        self.trans = Translator()
+        self.trans = translator.Translator()
 
     def default(self, line):
         try:
@@ -33,7 +32,8 @@ class REPL(Cmd):
         return True
 
     def do_reload(self, line):
-        reload(translator)#, Translator)
+        reload(translator)
+        self.trans = translator.Translator()
         return False
 
 

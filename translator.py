@@ -7,7 +7,7 @@ LEFTOPS = "+-*/%"
 QUOTE = 'quote'
 TEXT = 'text'
 IF = 'if'
-LAMBDA = 'lambda'
+FN = 'fn'
 
 class Translator:
     def translate(self, y):
@@ -44,10 +44,9 @@ class Translator:
                         "{return " + self.translate(y[3]) + ";};}()"
                 else:
                     assert False
-            elif y[0] == LAMBDA:
+            elif y[0] == FN:
                 args = ','.join(y[1])
                 body = self.translate(y[2])
-                print body
                 return "function(){return (function(" +  args + "){return " + body + ";})}()"
             elif y[0] in MONOOPS and n == 2:
                 '''[-, 1] ==> -1'''

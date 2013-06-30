@@ -11,8 +11,6 @@ class Executor:
     def __init__(self):
         self.driver = driver = webdriver.PhantomJS('phantomjs')     
         p = os.path.join(os.getcwd(), PAGE)
-        print p
-        print open(p).read()[:100]
         self.driver.get(scheme + p)
 
     def execute(self, script):
